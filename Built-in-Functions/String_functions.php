@@ -6,15 +6,18 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-        echo pow(2, 7);
-        echo "<br>";
-        //returns random numberbetween parameters
-        echo rand(1, 1000) . "<br>"; 
-        echo sqrt(1000) . "<br>";
-        echo ceil(4.6) . "<br>";
-        echo floor(4.6) . "<br>";
+    <?php 
+        $strings = "Hello World!";
 
+        echo strlen($strings);
+
+        echo "<br>";
+
+        echo strtoupper($strings);
+
+        echo "<br>";
+
+        echo strtolower($strings);
     ?>
 </body>
 </html>
