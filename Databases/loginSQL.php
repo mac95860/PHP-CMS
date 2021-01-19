@@ -2,7 +2,6 @@
     if(isset($_POST['submit'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-
         $connection = mysqli_connect('localhost', 'root', 'this.password', 'loginapp');
 
         if($connection) {
@@ -11,11 +10,9 @@
             die("Error ". mysqli_connect_error());
         }
 
-        mysqli_query($connection, $user_table);
-
+        // CREATE
         $query = "INSERT INTO users(username, password)";
         $query .= "VALUES ('$username', '$password')";
-
         $result = mysqli_query($connection, $query);
 
         if(!$result) {
@@ -24,6 +21,14 @@
             echo "table created with data";
         }
     }
+    //READ
+    $read = "SELECT * FROM users";
+    $new_result = mysqli_query($connection, $read);
+
+    if(!$new_result) {
+        die("Error: " . mysqli_connect_error());
+    } 
+    
 ?>
 
 <!DOCTYPE html>
@@ -49,6 +54,19 @@
             </div>
 
             <input type="submit" name = "submit" value="Submit" class="btn btn-primary my-2">
+
+            <?php 
+                while($row = mysqli_fetch_assoc($new_result)) {
+            ?>
+                    <pre>
+                        <?php
+                            print_r($row);
+                        ?>
+                    </pre>
+            <!-- All code must be in php tags. Brackets do not need to be in the same php tags to close -->
+            <?php
+                }
+            ?>
         </form>
     </div>
 </div>
