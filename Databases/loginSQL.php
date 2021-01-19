@@ -3,12 +3,25 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $connection = mysqli_connect('localhost', 'root', 'root', 'employeesdb');
+        $connection = mysqli_connect('localhost', 'root', 'this.password', 'loginapp');
 
         if($connection) {
             echo "we are connected";
         } else {
             die("Error ". mysqli_connect_error());
+        }
+
+        mysqli_query($connection, $user_table);
+
+        $query = "INSERT INTO users(username, password)";
+        $query .= "VALUES ('$username', '$password')";
+
+        $result = mysqli_query($connection, $query);
+
+        if(!$result) {
+            die("Error " . mysqli_connect_error());
+        } else {
+            echo "table created with data";
         }
     }
 ?>
@@ -24,6 +37,7 @@
 <body>
 <div class = "container">
     <div class = "col-md-6">
+            <!-- always make sure the right file is in the action attribute -->
         <form action="loginSQL.php" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
