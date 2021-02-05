@@ -1,18 +1,13 @@
-<?php 
+<?php include "db.php";
     if(isset($_POST['submit'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $connection = mysqli_connect('localhost', 'root', 'this.password', 'loginapp');
-
-        if($connection) {
-            echo "we are connected";
-        } else {
-            die("Error ". mysqli_connect_error());
-        }
 
         // CREATE
-        $query = "INSERT INTO users(username, password)";
-        $query .= "VALUES ('$username', '$password')";
+        
+        $query = "INSERT INTO users( username, password)";
+        $query .= "VALUES ( '$username', '$password')";
+        
         $result = mysqli_query($connection, $query);
 
         if(!$result) {
@@ -27,8 +22,7 @@
 
     if(!$new_result) {
         die("Error: " . mysqli_connect_error());
-    } 
-    
+    }    
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +45,12 @@
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" name = "password" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <select name="" id="">
+                    <option value="">1</option>
+                </select>
             </div>
 
             <input type="submit" name = "submit" value="Submit" class="btn btn-primary my-2">
