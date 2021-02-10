@@ -1,5 +1,11 @@
-<?php include "db.php"; ?>
+<!-- <?php include "db.php"; ?> -->
 <?php include "functions.php"; ?>
+
+<?php
+    if(isset($_POST['submit'])) {
+        updateUser();
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +20,7 @@
 <div class = "container">
     <div class = "col-md-6">
             <!-- always make sure the right file is in the action attribute -->
-        <form action="loginSQL.php" method="post">
+        <form action="update.php" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" class="form-control">
