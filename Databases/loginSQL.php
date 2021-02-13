@@ -1,10 +1,8 @@
 <?php include "db.php"; ?>
 <?php include "functions.php"; ?>
 <?php
-    if(isset($_POST['submit'])) {
-        createUser();
-    }
-    //READ
+    createUser();
+    
     $read = "SELECT * FROM users";
     $new_result = mysqli_query($connection, $read);
 
@@ -33,13 +31,7 @@
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" name = "password" class="form-control">
-            </div>
-
-            <div class="form-group">
-                <select name="" id="">
-                    <option value="">1</option>
-                </select>
+                <input type="password" name="password" class="form-control">
             </div>
 
             <input type="submit" name = "submit" value="Submit" class="btn btn-primary my-2">
